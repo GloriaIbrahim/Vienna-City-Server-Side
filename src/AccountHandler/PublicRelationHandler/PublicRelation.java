@@ -32,10 +32,12 @@ public class PublicRelation extends Staff implements PublicRelationInt{
         this.email = email;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
