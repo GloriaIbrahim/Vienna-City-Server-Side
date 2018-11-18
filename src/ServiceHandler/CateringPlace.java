@@ -10,7 +10,5 @@ package ServiceHandler;
  * @author glori
  */
 public class CateringPlace {
-    public void taste(){
-        
-    }
+   
 }
