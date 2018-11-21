@@ -14,15 +14,10 @@ import AccountHandler.Person;
 public class Admin extends Person implements AdminInt{
     private static Admin adminInstance=null;
 
-    private Admin(Admin adminInstance) {
-        this.adminInstance = adminInstance;
+    private Admin() {
+        super("Mamdouh", 78657866, "12 April 1980", "mamdouh555555", "123456");
     }
-
-    private Admin(Admin adminInstance, String name, int SSN, String dateOfBirth, String username, String password) {
-        super(name, SSN, dateOfBirth, username, password);
-        this.adminInstance = adminInstance;
-    }
-
+    
     @Override
     public void monitorAttandance(){
         
@@ -34,7 +29,13 @@ public class Admin extends Person implements AdminInt{
     }
     
     public static Admin getAdmin() {
-        return adminInstance;
+        if(adminInstance==null)
+        {
+            adminInstance=new Admin();
+            return adminInstance;
+        }
+        else
+            return adminInstance;
     }
 
     @Override
