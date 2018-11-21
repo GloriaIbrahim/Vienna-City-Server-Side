@@ -10,5 +10,7 @@ package UtilityHandler;
  * @author glori
  */
 public interface UtilitiesAgencyInt {
+    public void addNewUtility(Utility utilityIn);
+    public Utility getUtility();
     
 }
