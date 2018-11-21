@@ -10,5 +10,6 @@ package ResidentDemandsHandler;
  * @author glori
  */
 public interface ComplaintResidentServiceInt {
-    
+    public void deleteComplaint();
+    public Complaint viewComplaint();
 }

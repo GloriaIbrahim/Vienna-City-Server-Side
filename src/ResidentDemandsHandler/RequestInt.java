@@ -10,5 +10,7 @@ package ResidentDemandsHandler;
  * @author glori
  */
 public interface RequestInt {
-    
+    public void makeNewRequest(Request r);
+    public Request viewRequest();
+    public void deleteRequest();
 }

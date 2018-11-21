@@ -5,10 +5,14 @@
  */
 package ResidentDemandsHandler;
 
+import AccountHandler.ResidentServiceHandler.ResidentServiceObserver;
+
 /**
  *
  * @author glori
  */
 public interface RequestSubject {
-    
+    public void notifyAllResidentServices();
+    public void addNewResidentService(ResidentServiceObserver r);
+    public void removeResidentService(String name);
 }

@@ -10,5 +10,7 @@ package ResidentDemandsHandler;
  * @author glori
  */
 public interface ComplaintInt {
-    
+    public void makeNewComplaint(Complaint c);
+    public void deleteComplaint();
+    public Complaint viewComplaint();
 }

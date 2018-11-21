@@ -10,5 +10,5 @@ package ExternalRelations;
  * @author glori
  */
 public interface CompanyInt {
-    
+    public Company displayCompanyDetails();
 }

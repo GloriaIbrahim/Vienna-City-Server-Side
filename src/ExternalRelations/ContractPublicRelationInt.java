@@ -10,5 +10,7 @@ package ExternalRelations;
  * @author glori
  */
 public interface ContractPublicRelationInt {
-    
+    public void createContract(String t,String d,String e,String s,String des);
+    public void removeContract(int id);
+    public Contract editContract(int id);
 }
