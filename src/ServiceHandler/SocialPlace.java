@@ -5,10 +5,24 @@
  */
 package ServiceHandler;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author glori
  */
-public class SocialPlace {
+public class SocialPlace implements Place {
+    ArrayList<String> venuesAvailable;
+    Schedule venuesSchedule;
+
+    @Override
+    public void bookPlacel(String i) {
+
+    }
+
+    @Override
+    public void approveBooking() {
+
+    }
     
 }

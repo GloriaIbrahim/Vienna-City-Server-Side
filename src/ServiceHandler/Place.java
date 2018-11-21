@@ -10,5 +10,7 @@ package ServiceHandler;
  * @author glori
  */
 public interface Place {
+    public void bookPlacel(String i);
+    public void approveBooking();
     
 }

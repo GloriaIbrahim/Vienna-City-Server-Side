@@ -10,5 +10,9 @@ package ServiceHandler;
  * @author glori
  */
 public interface ServicesCenterInt {
+    public void addNewBusStop(BusStopPlace i);
+    public void ddNewPlace(Place i);
+    public BusStopPlace getBusStop();
+    public Place getCateringPlace();
     
 }

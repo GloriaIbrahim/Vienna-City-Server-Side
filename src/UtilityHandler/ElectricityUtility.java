@@ -3,31 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ServiceHandler;
+package UtilityHandler;
 
 /**
  *
  * @author glori
  */
-public class ServicesCenter implements ServicesCenterInt{
+public class ElectricityUtility implements Utility {
 
     @Override
-    public void addNewBusStop(BusStopPlace i) {
-
+    public void reserveUtility(String i, String j, String h, String k, String l) {
+        
     }
 
     @Override
-    public void ddNewPlace(Place i) {
-
+    public void scheduleReservation(String i) {
+        
     }
 
     @Override
-    public BusStopPlace getBusStop() {
-        return null;
-    }
-
-    @Override
-    public Place getCateringPlace() {
+    public Utility getReservation() {
         return null;
     }
     
