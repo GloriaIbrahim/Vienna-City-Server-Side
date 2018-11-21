@@ -9,6 +9,20 @@ package UtilityHandler;
  *
  * @author glori
  */
-public class UtilitiesAgency {
+public class UtilitiesAgency implements UtilitiesAgencyInt {
+    private String location;
+
+    @Override
+    public void addNewUtility(Utility utilityIn) {
+        
+    }
+
+    @Override
+    public Utility getUtility() {
+        return null;
+
+    }
+
+    
     
 }
