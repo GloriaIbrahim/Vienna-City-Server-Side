@@ -7,58 +7,82 @@ package ResidentDemandsHandler;
 
 import java.util.ArrayList;
 import AccountHandler.ResidentServiceHandler.ResidentServiceObserver;
-
+import DB.ComplaintTable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 /**
  *
  * @author glori
  */
-public class Complaint implements ComplaintSubject, ComplaintResidentServiceInt {
+public class Complaint extends UnicastRemoteObject implements ComplaintSubject, ComplaintResidentServiceInt  {
     private String residentName,residentPhone,residentAddress,complaintAbout,complaintDescription;
+    private static int ID=0;
     private ArrayList<ResidentServiceObserver> residentServices;
-
-    public Complaint() {
+    public ComplaintTable table=new ComplaintTable();
+    public Complaint()throws RemoteException {
         this.residentServices = new ArrayList<>();
+        ID++;
     }
-
     
-    public Complaint(String residentName, String residentPhone, String residentAddress, String complaintAbout, String complaintDescription) {
+    public Complaint(String residentName, String residentPhone, String residentAddress, String complaintAbout, String complaintDescription)throws RemoteException {
         this.residentName = residentName;
         this.residentPhone = residentPhone;
         this.residentAddress = residentAddress;
         this.complaintAbout = complaintAbout;
         this.complaintDescription = complaintDescription;
         this.residentServices = new ArrayList<>();
+        ID++;
     }
 
     
-    public Complaint(String residentName, String residentPhone, String residentAddress, String complaintAbout, String complaintDescription, ArrayList<ResidentServiceObserver> residentServices) {
+    public Complaint(String residentName, String residentPhone, String residentAddress, String complaintAbout, String complaintDescription, ArrayList<ResidentServiceObserver> residentServices) throws RemoteException{
         this.residentName = residentName;
         this.residentPhone = residentPhone;
         this.residentAddress = residentAddress;
         this.complaintAbout = complaintAbout;
         this.complaintDescription = complaintDescription;
         this.residentServices = residentServices;
+        ID++;
     }
 
-    public void makeNewComplaint(Complaint c){
+    public void addNewComplaint(Complaint c)throws RemoteException{
+        table.insertComplaint(c);
     }
     
-    public Complaint viewComplaint(){
-        return this;
+    @Override
+    public Complaint viewComplaint()throws RemoteException{
+        return table.getComplaintByID(ID);
     }
     
-    public void notifyAllResidentServices(){
-        
+    @Override
+    public void deleteComplaint()throws RemoteException{
+        table.deleteComplaint(ID);
     }
     
-    public void addNewResidentService(ResidentServiceObserver r){
+    @Override
+    public void notifyAllResidentServices()throws RemoteException{
+        for(int i=0;i<residentServices.size();i++)
+            residentServices.get(i).getNewComplaintNotification("New Complaint is added by "+residentName+" at "+residentAddress);
+    }
+    
+    @Override
+    public void addNewResidentService(ResidentServiceObserver r)throws RemoteException{
+        residentServices.add(r);
+    }
+    @Override
+    public void removeResidentService(String name)throws RemoteException{
+        for(int i=0;i<residentServices.size();i++)
+            if(residentServices.get(i).getName().equals(name))
+                residentServices.remove(i);
         
     }
-    public void removeResidentService(String name){
-        
+
+    public static int getID() {
+        return ID;
     }
-    public void deleteComplaint(){
-        
+
+    public static void setID(int ID) {
+        Complaint.ID = ID;
     }
     
     public String getResidentName() {
@@ -111,8 +135,10 @@ public class Complaint implements ComplaintSubject, ComplaintResidentServiceInt 
 
     @Override
     public String toString() {
-        return "Complaint{" + "residentName=" + residentName + ", residentPhone=" + residentPhone + ", residentAddress=" + residentAddress + ", complaintAbout=" + complaintAbout + ", complaintDescription=" + complaintDescription + ", residentServices=" + residentServices + '}';
+        return "Complaint "+ID+" by " + residentName + "/nHis phone number is " + residentPhone + "/nHis address is " + residentAddress + "/nThe complaint is about " + complaintAbout + "/nThe complaints description is " + complaintDescription ;
     }
+
+    
 
     
 }

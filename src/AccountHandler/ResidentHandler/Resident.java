@@ -20,7 +20,7 @@ public class Resident extends Person implements ResidentInt{
     private ArrayList<Bill> bills;
     private ArrayList<Request> requests;
     private ArrayList<Complaint> complaints;
-    private String address;
+    private String address,region;
     private String phone;
 
     public Resident()throws RemoteException {
@@ -30,9 +30,10 @@ public class Resident extends Person implements ResidentInt{
         super(name, SSN, dateOfBirth, username, password);
     }
 
-    public Resident(String name, String phone, String address, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
+    public Resident(String name, String phone, String address,String region, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.address = address;
+        this.region=region;
         this.phone = phone;
         this.requests=new ArrayList<>();
         this.complaints=new ArrayList<>();
@@ -100,6 +101,14 @@ public class Resident extends Person implements ResidentInt{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     @Override

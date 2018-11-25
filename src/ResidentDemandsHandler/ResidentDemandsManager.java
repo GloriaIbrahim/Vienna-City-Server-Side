@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author glori
  */
 public class ResidentDemandsManager {
-    ArrayList<Complaint> complaints=new ArrayList<>();
-    ArrayList<Request> requests=new ArrayList<>();
+    public static ArrayList<Complaint> complaints=new ArrayList<>();
+    public static ArrayList<Request> requests=new ArrayList<>();
+    
 }

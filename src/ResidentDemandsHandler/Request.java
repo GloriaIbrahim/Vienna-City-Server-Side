@@ -7,62 +7,85 @@ package ResidentDemandsHandler;
 
 import AccountHandler.ResidentServiceHandler.ResidentServiceObserver;
 import java.util.ArrayList;
-
+import DB.RequestTable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 /**
  *
  * @author glori
  */
-public class Request implements RequestSubject, RequestResidentServiceInt{
+public class Request extends UnicastRemoteObject implements RequestSubject, RequestResidentServiceInt{
     private String residentName,residentPhone,residentAddress;
     private String serviceType,serviceNeededDate;
     private ArrayList<ResidentServiceObserver> residentServices;
-
-    public Request() {
+    private static int ID=0;
+    public RequestTable table=new RequestTable();
+    public Request() throws RemoteException {
         this.residentServices = new ArrayList<>();
+        ID++;
     }
 
-    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate) {
+    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate) throws RemoteException {
         this.residentName = residentName;
         this.residentPhone = residentPhone;
         this.residentAddress = residentAddress;
         this.serviceType = serviceType;
         this.serviceNeededDate = serviceNeededDate;
         this.residentServices = new ArrayList<>();
+        ID++;
     }
 
     
-    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate, ArrayList<ResidentServiceObserver> residentServices) {
+    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate, ArrayList<ResidentServiceObserver> residentServices)throws RemoteException  {
         this.residentName = residentName;
         this.residentPhone = residentPhone;
         this.residentAddress = residentAddress;
         this.serviceType = serviceType;
         this.serviceNeededDate = serviceNeededDate;
         this.residentServices = residentServices;
+        ID++;
     }
 
-    public void makeNewRequest(Request r){
-        
+    public void addNewRequest(Request r)throws RemoteException {
+        table.insertRequest(r);
+    }
+     
+    @Override
+    public void deleteRequest()throws RemoteException {
+        table.deleteRequest(ID);
     }
     
-    public Request viewRequest(){
-        return this;
+    @Override
+    public Request viewRequest()throws RemoteException {
+        return table.getRequestByID(ID) ;
     }
     
-    public void notifyAllResidentServices(){
-        
+    @Override
+    public void notifyAllResidentServices()throws RemoteException {
+        for(int i=0;i<residentServices.size();i++)
+            residentServices.get(i).getNewComplaintNotification("New Request is added by "+residentName+" at "+residentAddress);
     }
     
-    public void addNewResidentService(ResidentServiceObserver r){
+    @Override
+    public void addNewResidentService(ResidentServiceObserver r)throws RemoteException {
+        residentServices.add(r);
+    }
+    @Override
+    public void removeResidentService(String name)throws RemoteException {
+        for(int i=0;i<residentServices.size();i++)
+            if(residentServices.get(i).getName().equals(name))
+                residentServices.remove(i);
         
+    }
+
+    public static int getID() {
+        return ID;
+    }
+
+    public static void setID(int ID) {
+        Request.ID = ID;
     }
     
-    public void removeResidentService(String name){
-        
-    }
-    
-    public void deleteRequest(){
-        
-    }
     
     public String getResidentName() {
         return residentName;

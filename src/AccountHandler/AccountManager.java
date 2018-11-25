@@ -17,8 +17,8 @@ import java.util.ArrayList;
  * @author glori
  */
 public class AccountManager {
-    ArrayList<Resident> residents=new ArrayList<>();
-    ArrayList<PublicRelation> PRs=new ArrayList<>();
-    ArrayList<Employee> employees=new ArrayList<>();
-    ArrayList<ResidentService> residentServices=new ArrayList<>();
+    public ArrayList<Resident> residents=new ArrayList<>();
+    public ArrayList<PublicRelation> PRs=new ArrayList<>();
+    public ArrayList<Employee> employees=new ArrayList<>();
+    public ArrayList<ResidentService> residentServices=new ArrayList<>();
 }
