@@ -32,8 +32,8 @@ public class ComplaintTable {
 
         // Initialize
         client = new MongoClient();
-        database = client.getDatabase("test"); // Database name
-        collection = database.getCollection("tt"); // Collection name
+        database = client.getDatabase("ViennaCity"); // Database name
+        collection = database.getCollection("Complaint"); // Collection name
     }
 
     public void insertComplaint(Complaint c) {
