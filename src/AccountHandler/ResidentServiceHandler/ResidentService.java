@@ -29,11 +29,11 @@ public class ResidentService extends Staff implements ResidentServiceInt,Residen
     
     
     @Override
-    public void getNewComplaintNotification(){
+    public void getNewComplaintNotification(String m){
         
     }
     @Override
-    public void getNewRequestNotification(){
+    public void getNewRequestNotification(String m){
         
     }
     @Override

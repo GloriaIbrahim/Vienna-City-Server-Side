@@ -21,6 +21,6 @@ public interface ResidentServiceInt {
     public void checkOut(Time t);
     public float checkSalary();
     public void contactPublicRelation(PublicRelation pr);
-    public void getNewComplaintNotification();
-    public void getNewRequestNotification();
+    public void getNewComplaintNotification(String m);
+    public void getNewRequestNotification(String m);
 }

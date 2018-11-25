@@ -6,13 +6,15 @@
 package ResidentDemandsHandler;
 
 import AccountHandler.ResidentServiceHandler.ResidentServiceObserver;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  *
  * @author glori
  */
-public interface ComplaintSubject {
-    public void notifyAllResidentServices();
-    public void addNewResidentService(ResidentServiceObserver r);
-    public void removeResidentService(String name);
+public interface ComplaintSubject extends Remote{
+    public void notifyAllResidentServices()throws RemoteException;
+    public void addNewResidentService(ResidentServiceObserver r)throws RemoteException;
+    public void removeResidentService(String name)throws RemoteException;
 }

@@ -10,6 +10,7 @@ package AccountHandler.ResidentServiceHandler;
  * @author glori
  */
 public interface ResidentServiceObserver {
-    public void getNewComplaintNotification();
-    public void getNewRequestNotification();
+    public void getNewComplaintNotification(String m);
+    public void getNewRequestNotification(String m);
+    public String getName();
 }

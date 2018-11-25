@@ -5,11 +5,14 @@
  */
 package ResidentDemandsHandler;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author glori
  */
-public interface RequestResidentServiceInt {
-    public void deleteRequest();
-    public Request viewRequest();
+public interface RequestResidentServiceInt extends Remote {
+    public void deleteRequest()throws RemoteException ;
+    public Request viewRequest()throws RemoteException ;
 }
