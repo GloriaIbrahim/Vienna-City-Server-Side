@@ -6,7 +6,7 @@
 package ServiceHandler;
 
 import java.util.ArrayList;
-
+import ServiceHandler.ServiceManger;
 /**
  *
  * @author glori
@@ -17,14 +17,48 @@ public class BusStopPlace implements BusStopPlaceInt {
     private Schedule bussesSchedule;
     private String region;
 
-    @Override
-    public void checkBussesSchedule() {
+    public BusStopPlace(ArrayList<String> allocatedBusses, Schedule bussesSchedule, String region) {
+        this.allocatedBusses = allocatedBusses;
+        this.bussesSchedule = bussesSchedule;
+        this.region = region;
+    }
 
+    public ArrayList<String> getAllocatedBusses() {
+        return allocatedBusses;
+    }
+
+    public void setAllocatedBusses(ArrayList<String> allocatedBusses) {
+        this.allocatedBusses = allocatedBusses;
+    }
+
+    public Schedule getBussesSchedule() {
+        return bussesSchedule;
+    }
+
+    public void setBussesSchedule(Schedule bussesSchedule) {
+        this.bussesSchedule = bussesSchedule;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    
+    @Override
+    public String checkBussesSchedule() {
+       
+       return "the number of busses in the bus stop is "+allocatedBusses.size()+" ,One will be dispatched according to the following slots, "+ getBussesSchedule().findAvailableSlots();
+        
     }
 
     @Override
-    public void addNewBus(int i) {
-
+    public void addNewBus(String plates) {
+      
+        getAllocatedBusses().add(plates);  
     }
 
 

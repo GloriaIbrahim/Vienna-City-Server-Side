@@ -10,7 +10,6 @@ package ServiceHandler;
  * @author glori
  */
 public interface BusStopPlaceInt {
-    public void checkBussesSchedule();
-    public void addNewBus(int i);
-    
+    public String checkBussesSchedule();
+    public void addNewBus(String plates);  
 }

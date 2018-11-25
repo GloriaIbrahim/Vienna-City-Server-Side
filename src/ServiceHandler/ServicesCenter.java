@@ -13,22 +13,22 @@ public class ServicesCenter implements ServicesCenterInt{
 
     @Override
     public void addNewBusStop(BusStopPlace i) {
-
+ 
     }
-
-    @Override
-    public void ddNewPlace(Place i) {
-
-    }
-
+    
     @Override
     public BusStopPlace getBusStop() {
         return null;
     }
 
     @Override
-    public Place getCateringPlace() {
-        return null;
+    public void addNewPlace(PlaceInt i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public PlaceInt getPlace() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

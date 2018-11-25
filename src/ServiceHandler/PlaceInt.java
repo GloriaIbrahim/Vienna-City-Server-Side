@@ -9,10 +9,8 @@ package ServiceHandler;
  *
  * @author glori
  */
-public interface ServicesCenterInt {
-    public void addNewBusStop(BusStopPlace i);
-    public void addNewPlace(PlaceInt i);
-    public BusStopPlace getBusStop();
-    public PlaceInt getPlace();
+public interface PlaceInt {
+    public void bookPlacel(String i);
+    public void approveBooking();
     
 }

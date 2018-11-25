@@ -26,18 +26,19 @@ public class ResidentService extends Staff implements ResidentServiceInt,Residen
     public ResidentService(Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(checkInTime, checkOutTime, salary, name, SSN, dateOfBirth, username, password);
     }
-    
-    
+
     @Override
-    public void getNewComplaintNotification(){
+    public void contactPublicRelation(PublicRelation pr,String m){
         
     }
+
     @Override
-    public void getNewRequestNotification(){
-        
+    public void getNewComplaintNotification(String m) {
+        System.out.println("NewComplain NOTE :"+m); //To change body of generated methods, choose Tools | Templates.
     }
+
     @Override
-    public void contactPublicRelation(PublicRelation pr){
-        
+    public void getNewRequestNotification(String m) {
+        System.out.println("NewComplain NOTE :"+m); //To change body of generated methods, choose Tools | Templates.
     }
 }
