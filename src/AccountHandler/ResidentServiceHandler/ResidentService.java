@@ -7,12 +7,27 @@ package AccountHandler.ResidentServiceHandler;
 
 import AccountHandler.PublicRelationHandler.PublicRelation;
 import AccountHandler.Staff;
+import java.rmi.RemoteException;
+import java.sql.Time;
 
 /**
  *
  * @author glori
  */
 public class ResidentService extends Staff implements ResidentServiceInt,ResidentServiceObserver{
+
+    public ResidentService() throws RemoteException {
+    }
+
+    public ResidentService(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
+        super(name, SSN, dateOfBirth, username, password);
+    }
+
+    public ResidentService(Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
+        super(checkInTime, checkOutTime, salary, name, SSN, dateOfBirth, username, password);
+    }
+    
+    
     @Override
     public void getNewComplaintNotification(){
         

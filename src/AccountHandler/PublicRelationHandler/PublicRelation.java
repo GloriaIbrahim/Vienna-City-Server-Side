@@ -6,6 +6,7 @@
 package AccountHandler.PublicRelationHandler;
 
 import AccountHandler.Staff;
+import java.rmi.RemoteException;
 import java.sql.Time;
 
 /**
@@ -15,19 +16,19 @@ import java.sql.Time;
 public class PublicRelation extends Staff implements PublicRelationInt{
     private String email;
 
-    public PublicRelation() {
+    public PublicRelation()throws RemoteException {
     }
 
-    public PublicRelation(String name, int SSN, String dateOfBirth, String username, String password) {
+    public PublicRelation(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
     }
 
-    public PublicRelation(String email, String name, int SSN, String dateOfBirth, String username, String password) {
+    public PublicRelation(String email, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.email = email;
     }
 
-    public PublicRelation(String email, Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) {
+    public PublicRelation(String email, Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(checkInTime, checkOutTime, salary, name, SSN, dateOfBirth, username, password);
         this.email = email;
     }

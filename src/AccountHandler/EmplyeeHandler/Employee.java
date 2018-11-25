@@ -6,6 +6,7 @@
 package AccountHandler.EmplyeeHandler;
 
 import AccountHandler.Staff;
+import java.rmi.RemoteException;
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -17,20 +18,20 @@ public class Employee extends Staff implements EmployeeInt{
     private Boolean availability;
     private ArrayList<String> workingDays;
 
-    public Employee() {
+    public Employee()throws RemoteException {
     }
 
-    public Employee(String name, int SSN, String dateOfBirth, String username, String password) {
+    public Employee(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
     }
 
-    public Employee(Boolean availability, ArrayList<String> workingDays, String name, int SSN, String dateOfBirth, String username, String password) {
+    public Employee(Boolean availability, ArrayList<String> workingDays, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.availability = availability;
         this.workingDays = workingDays;
     }
 
-    public Employee(Boolean availability, ArrayList<String> workingDays, Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) {
+    public Employee(Boolean availability, ArrayList<String> workingDays, Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(checkInTime, checkOutTime, salary, name, SSN, dateOfBirth, username, password);
         this.availability = availability;
         this.workingDays = workingDays;
