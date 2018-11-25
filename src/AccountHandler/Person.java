@@ -5,11 +5,14 @@
  */
 package AccountHandler;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 /**
  *
  * @author glori
  */
-abstract public class Person {
+abstract public class Person extends UnicastRemoteObject{
     private String name;
     private int SSN;
     private String dateOfBirth;
@@ -17,10 +20,10 @@ abstract public class Person {
     private String password;
     
     
-    public Person() {
+    public Person() throws RemoteException{
     }
 
-    public Person(String name, int SSN, String dateOfBirth, String username, String password) {
+    public Person(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         this.name = name;
         this.SSN = SSN;
         this.dateOfBirth = dateOfBirth;

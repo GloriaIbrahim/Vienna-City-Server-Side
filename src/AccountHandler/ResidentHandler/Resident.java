@@ -9,6 +9,7 @@ import AccountHandler.Person;
 import BillPayment.Bill;
 import ResidentDemandsHandler.Complaint;
 import ResidentDemandsHandler.Request;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -22,23 +23,23 @@ public class Resident extends Person implements ResidentInt{
     private String address;
     private String phone;
 
-    public Resident() {
+    public Resident()throws RemoteException {
     }
 
-    public Resident(String name, int SSN, String dateOfBirth, String username, String password) {
+    public Resident(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
     }
 
-    public Resident(String address, String phone, String name, int SSN, String dateOfBirth, String username, String password) {
+    public Resident(String name, String phone, String address, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.address = address;
         this.phone = phone;
-        this.requests=new ArrayList<Request>();
-        this.complaints=new ArrayList<Complaint>();
-        this.bills=new ArrayList<Bill>();
+        this.requests=new ArrayList<>();
+        this.complaints=new ArrayList<>();
+        this.bills=new ArrayList<>();
     }
     
-    public Resident(ArrayList<Bill> bills, ArrayList<Request> requests, ArrayList<Complaint> complaints, String address, String phone, String name, int SSN, String dateOfBirth, String username, String password) {
+    public Resident(ArrayList<Bill> bills, ArrayList<Request> requests, ArrayList<Complaint> complaints, String address, String phone, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.bills = bills;
         this.requests = requests;
@@ -50,10 +51,12 @@ public class Resident extends Person implements ResidentInt{
     public ArrayList<Bill> viewBills(){
         return getBills();
     }
+    @Override
     public void viewMap(){
         
     }
-    public void addNewResident(Resident r){
+    @Override
+    public void addNewResident(ResidentInt r){
         
     }
     public void removeResident(String n){
@@ -101,7 +104,12 @@ public class Resident extends Person implements ResidentInt{
 
     @Override
     public String toString() {
-        return "Resident{" + "bills=" + bills + ", requests=" + requests + ", complaints=" + complaints + ", address=" + address + ", phone=" + phone + '}';
+        return "Resident{" + "name=" + this.getName() + ", SSN=" + this.getSSN() + ", dateOfBirth=" + this.getDateOfBirth() + ", username=" + this.getUsername() + ", password=" + this.getPassword() + "bills=" + bills + ", requests=" + requests + ", complaints=" + complaints + ", address=" + address + ", phone=" + phone + '}';
+    }
+
+    @Override
+    public void editProfile(ResidentInt p) throws RemoteException {
+        
     }
     
 }

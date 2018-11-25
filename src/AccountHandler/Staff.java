@@ -5,6 +5,7 @@
  */
 package AccountHandler;
 
+import java.rmi.RemoteException;
 import java.sql.Time;
 
 /**
@@ -18,14 +19,14 @@ abstract public class Staff extends Person{
 
     //constractors
     
-    public Staff() {
+    public Staff() throws RemoteException{
     }
 
-    public Staff(String name, int SSN, String dateOfBirth, String username, String password) {
+    public Staff(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
     }
 
-    public Staff(Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) {
+    public Staff(Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.checkInTime = checkInTime;
         this.checkOutTime = checkOutTime;

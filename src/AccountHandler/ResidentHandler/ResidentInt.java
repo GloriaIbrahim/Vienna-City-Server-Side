@@ -5,17 +5,19 @@
  */
 package AccountHandler.ResidentHandler;
 
-import AccountHandler.Person;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  *
  * @author glori
  */
-public interface ResidentInt {
-    public void login(String u,String p);
-    public void logout();
-    public void editProfile(Person p);
-    public void viewMap();
-    public void addNewResident(Resident r);
-    public void removeResident(String n);
+public interface ResidentInt extends Remote{
+    public void login(String u,String p)throws RemoteException;
+    public void logout()throws RemoteException;
+    public void editProfile(ResidentInt p)throws RemoteException;
+    public void viewMap()throws RemoteException;
+    public void addNewResident(ResidentInt r)throws RemoteException;
+    public void removeResident(String n)throws RemoteException;
+    public String getName()throws RemoteException;
 }

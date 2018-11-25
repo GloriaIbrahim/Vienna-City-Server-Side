@@ -6,6 +6,7 @@
 package AccountHandler.AdminHandler;
 
 import AccountHandler.Person;
+import java.rmi.RemoteException;
 
 /**
  *
@@ -14,21 +15,21 @@ import AccountHandler.Person;
 public class Admin extends Person implements AdminInt{
     private static Admin adminInstance=null;
 
-    private Admin() {
+    private Admin() throws RemoteException {
         super("Mamdouh", 78657866, "12 April 1980", "mamdouh555555", "123456");
     }
     
     @Override
-    public void monitorAttandance(){
+    public void monitorAttandance()throws RemoteException{
         
     }
     
-    @Override
-    public Admin getAdminInstance(){
-        return getAdmin();
-    }
+//    @Override
+//    public Admin getAdminInstance(){
+//        return getAdmin();
+//    }
     
-    public static Admin getAdmin() {
+    public static Admin getAdmin() throws RemoteException {
         if(adminInstance==null)
         {
             adminInstance=new Admin();
@@ -41,6 +42,11 @@ public class Admin extends Person implements AdminInt{
     @Override
     public String toString() {
         return "Admin{" + "adminInstance=" + adminInstance + '}';
+    }
+
+    @Override
+    public void editProfile(AdminInt a) throws RemoteException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
