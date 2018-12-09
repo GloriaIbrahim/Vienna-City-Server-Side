@@ -61,7 +61,9 @@ public class ViennaCity {
      */
     public static void main(String[] args) throws  RemoteException, AlreadyBoundException {
         
-        
+        Registry r = LocateRegistry.createRegistry(1102);
+        Registry r3=LocateRegistry.createRegistry(1103); 
+        Registry r4 = LocateRegistry.createRegistry(1104);
         /////////////////////////////////////////////////////
         ///////////GLORIA////////////////////////////////////
         /////////////////////////////////////////////////////
@@ -84,7 +86,6 @@ public class ViennaCity {
         
         
         // An RMI Registry initialized on port 1102
-        Registry r = LocateRegistry.createRegistry(1102);
         
         r.bind("residentDemands",residentDemands);
         r.bind("accountsManager", accountsManager);
@@ -137,7 +138,6 @@ public class ViennaCity {
         
         BillInt bi=new Bill(44,"m","e","d",555,new Cash());
         
-        Registry r2 = LocateRegistry.createRegistry(1200);
         
         
         
@@ -151,15 +151,15 @@ public class ViennaCity {
         
         BillInt electricity=new Bill(bi.getBillByIndex(i).getID(),bi.getBillByIndex(i).getResidentName(),bi.getBillByIndex(i).getType(),bi.getBillByIndex(i).getDescription(),bi.getBillByIndex(i).getAmount(),new Cash());
         r.bind("bille",electricity);
-        r2.bind("bille",electricity);
+        r4.bind("bille",electricity);
         BillInt water=new Bill(bi.getBillByIndex(i+1).getID(),bi.getBillByIndex(i+1).getResidentName(),bi.getBillByIndex(i+1).getType(),bi.getBillByIndex(i+1).getDescription(),bi.getBillByIndex(i+1).getAmount(),new Cash());
         r.bind("billw",water);
-        r2.bind("billw",water);
+        r4.bind("billw",water);
         BillInt gas=new Bill(bi.getBillByIndex(i+2).getID(),bi.getBillByIndex(i+2).getResidentName(),bi.getBillByIndex(i+2).getType(),bi.getBillByIndex(i+2).getDescription(),bi.getBillByIndex(i+2).getAmount(),new Cash());
         r.bind("billg",gas);
-        r2.bind("billg",gas);
+        r4.bind("billg",gas);
         r.bind("addbill",b);
-        r2.bind("addbill",b);
+        r4.bind("addbill",b);
         System.out.println("The server is ready");
         
         
@@ -172,7 +172,7 @@ public class ViennaCity {
         ExternalRelationsManagerInt er=new  ExternalRelationsManager();
         PublicRelationManager PR=PublicRelationManager.getExternalRelationsManager();
         PR.addNewPR( "Cherine", 12345, "6/12/1996", "Cherry", "cherry612");
-        Registry r3=LocateRegistry.createRegistry(1103); 
+        
         r3.bind("ExternalRelations",er);
         r3.bind("PRmanager", PR);
         System.out.println("My external relations server is ready!");
@@ -187,7 +187,7 @@ public class ViennaCity {
         
         accountsManager.addNewResidentService(residentService1);
         
-        Registry r4 = LocateRegistry.createRegistry(1104);
+        
         r4.bind("Factory", sm);
         r4.bind("accountsManager", accountsManager);
         r.bind("Factory", sm);
@@ -209,7 +209,7 @@ public class ViennaCity {
             ArrayList<Employee> employeesList = new ArrayList<>();
             employeesList.add(employee01);
             employeesList.add(employee02);
-     System.out.println("done");
+            System.out.println("done");
             
       
             Employee employee03 = new Employee("Motaz Bellah", 01, "01-01-1995", "motaz", "motaz", true, workingDaysSet1, "Cleaning");
