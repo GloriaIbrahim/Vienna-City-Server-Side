@@ -37,6 +37,7 @@ public class PublicRelationManager extends UnicastRemoteObject implements Public
             return prManager;
     }
         
+    @Override
     public void PRLogin(String u, String p)throws RemoteException{
         PublicRelation pr=prTable.getPRyUsername(u);
         if(pr.getPassword().equals(p))
@@ -47,9 +48,9 @@ public class PublicRelationManager extends UnicastRemoteObject implements Public
         else
             System.out.println("Wrong username or password");
     }
-    public void addNewPR(String email, Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException
+    public void addNewPR(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException
     {
-        PublicRelation pr=new PublicRelation(email,checkInTime,checkOutTime,salary,name,SSN,dateOfBirth,username,password);
+        PublicRelation pr=new PublicRelation(name,SSN,dateOfBirth,username,password);
         prTable.insertPR(pr);
     
     }

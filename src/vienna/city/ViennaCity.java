@@ -8,6 +8,7 @@ package vienna.city;
 import AccountHandler.AccountsManager;
 import AccountHandler.AdminHandler.Admin;
 import AccountHandler.EmplyeeHandler.Employee;
+import AccountHandler.PublicRelationHandler.PublicRelation;
 import AccountHandler.PublicRelationHandler.PublicRelationManager;
 import AccountHandler.ResidentHandler.Resident;
 import AccountHandler.ResidentHandler.ResidentInt;
@@ -148,15 +149,15 @@ public class ViennaCity {
         int i=1;
         
         BillInt electricity=new Bill(bi.getBillByIndex(i).getID(),bi.getBillByIndex(i).getResidentName(),bi.getBillByIndex(i).getType(),bi.getBillByIndex(i).getDescription(),bi.getBillByIndex(i).getAmount(),new Cash());
+        r.bind("bille",electricity);
         r2.bind("bille",electricity);
-        
         BillInt water=new Bill(bi.getBillByIndex(i+1).getID(),bi.getBillByIndex(i+1).getResidentName(),bi.getBillByIndex(i+1).getType(),bi.getBillByIndex(i+1).getDescription(),bi.getBillByIndex(i+1).getAmount(),new Cash());
+        r.bind("billw",water);
         r2.bind("billw",water);
-    
         BillInt gas=new Bill(bi.getBillByIndex(i+2).getID(),bi.getBillByIndex(i+2).getResidentName(),bi.getBillByIndex(i+2).getType(),bi.getBillByIndex(i+2).getDescription(),bi.getBillByIndex(i+2).getAmount(),new Cash());
+        r.bind("billg",gas);
         r2.bind("billg",gas);
-        
-        
+        r.bind("addbill",b);
         r2.bind("addbill",b);
         System.out.println("The server is ready");
         
@@ -169,6 +170,7 @@ public class ViennaCity {
        
         ExternalRelationsManagerInt er=new  ExternalRelationsManager();
         PublicRelationManager PR=PublicRelationManager.getExternalRelationsManager();
+        PR.addNewPR( "Cherine", 12345, "6/12/1996", "Cherry", "cherry612");
         Registry r3=LocateRegistry.createRegistry(1103); 
         r3.bind("ExternalRelations",er);
         r3.bind("PRmanager", PR);
@@ -182,6 +184,7 @@ public class ViennaCity {
         ServiceManger sm = ServiceManger.getInstance();
         Registry r4 = LocateRegistry.createRegistry(1104);
         r4.bind("Factory", sm);
+        r.bind("Factory", sm);
         System.out.println("The server is ready");
 
 
@@ -190,17 +193,6 @@ public class ViennaCity {
         ///////////////////////////////////////////////
         
         
-            // TODO code application logic here
-            //ResidentInt resident1=new Resident("Gloria","97678","Daher",4542,"2/8","Gloriat","lola1996");
-            // An RMI Registry initialized on port 1099
-            //Registry r = LocateRegistry.createRegistry(1099);
-//        Registry admin = LocateRegistry.createRegistry(1099);
-//r.bind("res", resident1);
-//        admin.bind("Admin",  Admin.getAdmin());
-            //Outputs that the server is ready
-            //      System.out.println("The server is ready");
-            // An RMI Registry initialized on port 1102
-
             // Outputs that the server is ready
             System.out.println("The server is ready");
 
@@ -211,23 +203,9 @@ public class ViennaCity {
             ArrayList<Employee> employeesList = new ArrayList<>();
             employeesList.add(employee01);
             employeesList.add(employee02);
-
-////
-            System.out.println("done");
+     System.out.println("done");
             
-            
-            
-            
-            //test date inputs
-//            Date now = new Date(31/12/2018);
-//         //   SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-//         //   String dateInString = "31/12/2018";
-//         //   Date date = sdf.parse(dateInString);
-//        //    System.out.println(date);
-//        //get the day of the week
-//SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE");
-//System.out.println(simpleDateformat.format(now));
-
+      
             Employee employee03 = new Employee("Motaz Bellah", 01, "01-01-1995", "motaz", "motaz", true, workingDaysSet1, "Cleaning");
             EmployeeGateway employeeGateway = EmployeeGateway.getInstance();
             employeeGateway.insertEmployee(employee03);

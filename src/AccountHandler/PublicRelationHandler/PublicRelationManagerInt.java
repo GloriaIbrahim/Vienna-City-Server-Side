@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package AccountHandler.PublicRelationHandler;
-
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  *
  * @author Cherine Hussein
  */
 public interface PublicRelationManagerInt extends Remote{
-    
+    public void PRLogin(String u, String p)throws RemoteException;
 }
