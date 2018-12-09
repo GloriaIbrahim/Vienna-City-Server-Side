@@ -20,12 +20,10 @@ public class PlaceFactory {
 public PlaceInt addaNewPlace(String s,String Name,String Address,Schedule sch) throws RemoteException{
 
     PlaceInt p;
-    System.out.println("ahlnnn");
     
     if("r".equals(s)){
-        System.out.println("ya reettt nshofhaaaa");
             PlaceInt rp = new ReligiousPlace(Name,Address,sch);
-            System.out.println("walllllrr");
+            System.out.println("Religious Place is added");
             ReligiousPlaceTable rpt = new ReligiousPlaceTable();
             rpt.insertplace((ReligiousPlace) rp);
             return rp;
@@ -33,7 +31,7 @@ public PlaceInt addaNewPlace(String s,String Name,String Address,Schedule sch) t
     else if ("s".equals(s))
     {
             PlaceInt sp =  new SocialPlace(Name,Address,sch);
-            System.out.println("wall s");
+            System.out.println("Social Place is added");
             SocialPlaceTable spt = new SocialPlaceTable();
             spt.insertplace((SocialPlace) sp);
             return sp;
@@ -42,7 +40,7 @@ public PlaceInt addaNewPlace(String s,String Name,String Address,Schedule sch) t
     else 
     {
             PlaceInt cp = new CateringPlace(Name,Address,sch);
-            System.out.println("walllllaaccc");
+            System.out.println("Catering Place is added");
             CateringPlaceTable cpt = new CateringPlaceTable();
             cpt.insertplace((CateringPlace) cp);
             return cp;
