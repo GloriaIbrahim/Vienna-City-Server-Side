@@ -5,6 +5,7 @@
  */
 package AccountHandler;
 
+import DB.EmployeeGateway;
 import java.rmi.RemoteException;
 import java.sql.Time;
 
@@ -12,14 +13,14 @@ import java.sql.Time;
  *
  * @author glori
  */
-abstract public class Staff extends Person{
-    private Time checkInTime;
-    private Time checkOutTime;
-    private float salary;
+abstract public class Staff extends Person {
+
+    protected Time checkInTime;
+    protected Time checkOutTime;
+    protected float salary;
 
     //constractors
-    
-    public Staff() throws RemoteException{
+    public Staff() throws RemoteException {
     }
 
     public Staff(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
@@ -34,21 +35,13 @@ abstract public class Staff extends Person{
     }
 
     //functions
-    
-    public void checkIn(Time t){
-        
-    }
-    
-    public void checkOut(Time t){
-        
-    }
-    
-    public float checkSalary(){
+ 
+
+    public float checkSalary() {
         return getSalary();
     }
-    
+
     //setters and getters
-    
     public Time getCheckInTime() {
         return checkInTime;
     }
@@ -57,12 +50,24 @@ abstract public class Staff extends Person{
         this.checkInTime = checkInTime;
     }
 
+    public void updateCheckInTime() {
+        EmployeeGateway employeeGateway = EmployeeGateway.getInstance();
+        employeeGateway.updateCheckInTime(this.SSN);
+
+    }
+
     public Time getCheckOutTime() {
         return checkOutTime;
     }
 
     public void setCheckOutTime(Time checkOutTime) {
         this.checkOutTime = checkOutTime;
+    }
+
+    public void updateCheckOutTime() {
+        EmployeeGateway employeeGateway = EmployeeGateway.getInstance();
+        employeeGateway.updateCheckOutTime(this.SSN);
+
     }
 
     public float getSalary() {
@@ -77,6 +82,5 @@ abstract public class Staff extends Person{
     public String toString() {
         return "Staff{" + "checkInTime=" + checkInTime + ", checkOutTime=" + checkOutTime + ", salary=" + salary + '}';
     }
-    
-    
+
 }

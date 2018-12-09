@@ -17,9 +17,8 @@ public interface EmployeeInt {
     public void login(String u,String p);
     public void logout();
     public void editProfile(Person p);
-    public void checkIn(Time t);
-    public void checkOut(Time t);
     public float checkSalary();
     public Boolean getAvailability();
-    public ArrayList<String> getWorkingDays();
+    public String[] getWorkingDays();
+    public String getjobTitle();
 }

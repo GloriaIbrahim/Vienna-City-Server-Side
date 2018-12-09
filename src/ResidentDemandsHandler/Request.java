@@ -5,60 +5,45 @@
  */
 package ResidentDemandsHandler;
 
+import AccountHandler.AccountsManager;
 import AccountHandler.ResidentServiceHandler.ResidentServiceObserver;
 import java.util.ArrayList;
-import DB.RequestTable;
+//import DB.RequestTable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 /**
  *
  * @author glori
  */
-public class Request extends UnicastRemoteObject implements RequestSubject, RequestResidentServiceInt{
+public class Request extends UnicastRemoteObject implements RequestInt, RequestSubject, RequestResidentServiceInt{
     private String residentName,residentPhone,residentAddress;
     private String serviceType,serviceNeededDate;
     private ArrayList<ResidentServiceObserver> residentServices;
-    private static int ID=0;
-    public RequestTable table=new RequestTable();
+    private int ID;
+    
     public Request() throws RemoteException {
-        this.residentServices = new ArrayList<>();
-        ID++;
+        for(int i=0;i<AccountsManager.getAccountManager().getResidentServices().size();i++)
+        {
+            this.residentServices.add(AccountsManager.getAccountManager().getResidentServices().get(i));
+        }
+        notifyAllResidentServices();
     }
 
-    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate) throws RemoteException {
+    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate,int id) throws RemoteException {
         this.residentName = residentName;
         this.residentPhone = residentPhone;
         this.residentAddress = residentAddress;
         this.serviceType = serviceType;
         this.serviceNeededDate = serviceNeededDate;
-        this.residentServices = new ArrayList<>();
-        ID++;
+        this.ID=id;
+        for(int i=0;i<AccountsManager.getAccountManager().getResidentServices().size();i++)
+        {
+            this.residentServices.add(AccountsManager.getAccountManager().getResidentServices().get(i));
+        }
+        notifyAllResidentServices();
+        
     }
 
-    
-    public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate, ArrayList<ResidentServiceObserver> residentServices)throws RemoteException  {
-        this.residentName = residentName;
-        this.residentPhone = residentPhone;
-        this.residentAddress = residentAddress;
-        this.serviceType = serviceType;
-        this.serviceNeededDate = serviceNeededDate;
-        this.residentServices = residentServices;
-        ID++;
-    }
-
-    public void addNewRequest(Request r)throws RemoteException {
-        table.insertRequest(r);
-    }
-     
-    @Override
-    public void deleteRequest()throws RemoteException {
-        table.deleteRequest(ID);
-    }
-    
-    @Override
-    public Request viewRequest()throws RemoteException {
-        return table.getRequestByID(ID) ;
-    }
     
     @Override
     public void notifyAllResidentServices()throws RemoteException {
@@ -78,51 +63,52 @@ public class Request extends UnicastRemoteObject implements RequestSubject, Requ
         
     }
 
-    public static int getID() {
-        return ID;
-    }
-
-    public static void setID(int ID) {
-        Request.ID = ID;
-    }
-    
-    
+    @Override
     public String getResidentName() {
         return residentName;
     }
 
+    @Override
     public void setResidentName(String residentName) {
         this.residentName = residentName;
     }
 
+    @Override
     public String getResidentPhone() {
         return residentPhone;
     }
 
+    @Override
     public void setResidentPhone(String residentPhone) {
         this.residentPhone = residentPhone;
     }
 
+    @Override
     public String getResidentAddress() {
         return residentAddress;
     }
 
+    @Override
     public void setResidentAddress(String residentAddress) {
         this.residentAddress = residentAddress;
     }
 
+    @Override
     public String getServiceType() {
         return serviceType;
     }
 
+    @Override
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
     }
 
+    @Override
     public String getServiceNeededDate() {
         return serviceNeededDate;
     }
 
+    @Override
     public void setServiceNeededDate(String serviceNeededDate) {
         this.serviceNeededDate = serviceNeededDate;
     }
@@ -137,8 +123,12 @@ public class Request extends UnicastRemoteObject implements RequestSubject, Requ
 
     @Override
     public String toString() {
-        return "Request{" + "residentName=" + residentName + ", residentPhone=" + residentPhone + ", residentAddress=" + residentAddress + ", serviceType=" + serviceType + ", serviceNeededDate=" + serviceNeededDate + ", residentServices=" + residentServices + '}';
+        return "Request "+ID+" by " + residentName + "\nHis phone number is " + residentPhone + "\nHis address is " + residentAddress + "\nThe utility type needed is " + serviceType + "\nThe utility is needed on " + serviceNeededDate ;
+            
     }
+
+
+   
     
     
 }

@@ -13,26 +13,26 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author glori
  */
-public class ComplaintFacade extends UnicastRemoteObject implements ComplaintInt {
+public class ComplaintFacade extends UnicastRemoteObject implements ComplaintFacadeInt {
     private Complaint complaint;
 
     public ComplaintFacade()throws RemoteException {
-        complaint=new Complaint();
+        complaint= new Complaint();
     }
 
-    public ComplaintFacade(Complaint complaint)throws RemoteException {
-        this.complaint = complaint;
+    public ComplaintFacade(ComplaintInt complaint)throws RemoteException {
+        this.complaint = (Complaint) complaint;
     }
     
-    @Override
-    public void addNewComplaint(Complaint c)throws RemoteException{
-        complaint.addNewComplaint(c);
-    }
-    
-    @Override
-    public Complaint viewComplaint()throws RemoteException{
-        return complaint;
-    }
+//    @Override
+//    public void addNewComplaint(ComplaintInt c)throws RemoteException{
+//        complaint.addNewComplaint(c);
+//    }
+//    
+//    @Override
+//    public ComplaintInt viewComplaint()throws RemoteException{
+//        return (ComplaintInt) complaint;
+//    }
     
     public void notifyAllResidentServices()throws RemoteException{
         complaint.notifyAllResidentServices();
@@ -46,10 +46,10 @@ public class ComplaintFacade extends UnicastRemoteObject implements ComplaintInt
         complaint.removeResidentService(name);
     }
     
-    @Override
-    public void deleteComplaint()throws RemoteException{
-        complaint.deleteComplaint();
-    }
+//    @Override
+//    public void deleteComplaint()throws RemoteException{
+//        complaint.deleteComplaint();
+//    }
     
     @Override
     public void setResidentInfo(String name,String phone,String add)throws RemoteException{

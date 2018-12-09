@@ -5,22 +5,28 @@
  */
 package ExternalRelations;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+
+
 /**
  *
  * @author glori
  */
-public class Company implements CompanyInt{
+public class Company extends UnicastRemoteObject implements CompanyInt{
     private String name;
     private int ID;
     private String address;
     private String specialization;
     private Contract contract;
     private String contactEmail;
+    
 
-    public Company() {
+    public Company() throws RemoteException {
     }
 
-    public Company(String name, int ID, String address, String specialization, Contract contract, String contactEmail) {
+    public Company(String name, int ID, String address, String specialization, Contract contract, String contactEmail) throws RemoteException {
         this.name = name;
         this.ID = ID;
         this.address = address;
@@ -29,64 +35,64 @@ public class Company implements CompanyInt{
         this.contactEmail = contactEmail;
     }
 
-    public void addNewCompany(String n,String add,String s){
-        
+    /*public void addNewCompany(CompanyInt newCompany)throws RemoteException{
+       table.insertCompany((Company)newCompany);
     }
     
-    public void removeCompany(int id){
-        
-    }
+    public void removeCompany(int id)throws RemoteException{
+        table.deleteCompany(id);
+    }*/
     
     @Override
-    public Company displayCompanyDetails(){
-        return this;
+    public Company displayCompanyDetails() throws RemoteException{
+        return this; 
     }
     
-    public String getName() {
+    public String getName() throws RemoteException{
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)throws RemoteException {
         this.name = name;
     }
 
-    public int getID() {
+    public int getID() throws RemoteException{
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(int ID) throws RemoteException{
         this.ID = ID;
     }
 
-    public String getAddress() {
+    public String getAddress() throws RemoteException{
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address)throws RemoteException {
         this.address = address;
     }
 
-    public String getSpecialization() {
+    public String getSpecialization()throws RemoteException {
         return specialization;
     }
 
-    public void setSpecialization(String specialization) {
+    public void setSpecialization(String specialization)throws RemoteException {
         this.specialization = specialization;
     }
 
-    public Contract getContract() {
-        return contract;
+    public ContractInt getContract() throws RemoteException{
+        return contract; 
     }
 
-    public void setContract(Contract contract) {
-        this.contract = contract;
+    public void setContract(ContractInt contract)throws RemoteException {
+        this.contract = (Contract)contract;
     }
 
-    public String getContactEmail() {
+    public String getContactEmail()throws RemoteException {
         return contactEmail;
     }
 
-    public void setContactEmail(String contactEmail) {
+    public void setContactEmail(String contactEmail) throws RemoteException{
         this.contactEmail = contactEmail;
     }
 
@@ -94,5 +100,9 @@ public class Company implements CompanyInt{
     public String toString() {
         return "Company{" + "name=" + name + ", ID=" + ID + ", address=" + address + ", specialization=" + specialization + ", contract=" + contract + ", contactEmail=" + contactEmail + '}';
     }
+
+    
+
+ 
     
 }

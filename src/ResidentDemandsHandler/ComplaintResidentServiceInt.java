@@ -13,6 +13,6 @@ import java.rmi.RemoteException;
  * @author glori
  */
 public interface ComplaintResidentServiceInt extends Remote{
-    public void deleteComplaint()throws RemoteException;
-    public Complaint viewComplaint()throws RemoteException;
+    //public void deleteComplaint()throws RemoteException;
+    //public ComplaintInt viewComplaint()throws RemoteException;
 }

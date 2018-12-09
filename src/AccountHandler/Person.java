@@ -12,18 +12,18 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author glori
  */
-abstract public class Person extends UnicastRemoteObject{
-    private String name;
-    private int SSN;
-    private String dateOfBirth;
-    private String username;
-    private String password;
+abstract public class Person{
+    protected String name;
+    protected int SSN;
+    protected String dateOfBirth;
+    protected String username;
+    protected String password;
     
     
-    public Person() throws RemoteException{
+    public Person() {
     }
 
-    public Person(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
+    public Person(String name, int SSN, String dateOfBirth, String username, String password) {
         this.name = name;
         this.SSN = SSN;
         this.dateOfBirth = dateOfBirth;

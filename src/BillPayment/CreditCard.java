@@ -5,30 +5,33 @@
  */
 package BillPayment;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import javax.swing.JOptionPane;
 /**
  *
  * @author glori
  */
-public class CreditCard implements Payment{
+public class CreditCard extends UnicastRemoteObject implements Payment{
     private int creditCardNum;
 
-    public CreditCard(int creditCardNum) {
+    public CreditCard(int creditCardNum) throws RemoteException{
         this.creditCardNum = creditCardNum;
     }
 
-    public CreditCard() {
+    public CreditCard() throws RemoteException{
     }
 
     @Override
-    public String pay(double b){
-        return "";
+    public String pay(double b) throws RemoteException{
+        return "Paid Sucessfully";
     }
     
-    public int getCreditCardNum() {
+    public int getCreditCardNum() throws RemoteException{
         return creditCardNum;
     }
 
-    public void setCreditCardNum(int creditCardNum) {
+    public void setCreditCardNum(int creditCardNum) throws RemoteException{
         this.creditCardNum = creditCardNum;
     }
 

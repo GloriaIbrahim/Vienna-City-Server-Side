@@ -5,11 +5,15 @@
  */
 package ExternalRelations;
 
+import java.rmi.RemoteException;
+
+
+
 /**
  *
  * @author glori
  */
-public class CompanyProxy implements CompanyInt{
+public class CompanyProxy implements CompanyInt {
     private Company company;
     private String name;
     private int ID;
@@ -17,7 +21,8 @@ public class CompanyProxy implements CompanyInt{
     private String specialization;
     private Contract contract;
     private String contactEmail;
-
+    private ExternalRelationsManager exmanager;
+    
     public CompanyProxy() {
     }
 
@@ -29,9 +34,57 @@ public class CompanyProxy implements CompanyInt{
         this.contract = contract;
         this.contactEmail = contactEmail;
     }
-    
-    @Override
-    public Company displayCompanyDetails(){
+
+    public Company getCompany() {
         return company;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+  
+    @Override
+    public Company displayCompanyDetails() throws RemoteException {
+        Company proxyCompany= new Company();  
+        return proxyCompany.displayCompanyDetails(); 
+    }
+
+    
+    public void addNewCompany(CompanyInt companyObj) throws RemoteException {
+        Company proxyCompany=(Company) companyObj;  
+        exmanager.addNewCompany(companyObj.getName(), companyObj.getID(), companyObj.getAddress(), companyObj.getSpecialization(), companyObj.getContract(), companyObj.getContactEmail());
+        //proxyCompany.addNewCompany(companyObj);
+    }
+
+    @Override
+    public void setContract(ContractInt contractObj) throws RemoteException {
+       Company proxyCompany= new Company();
+       proxyCompany.setContract(contractObj); 
+       /*exmanager.addContractToCompany(ID, contractObj);*/
+    }
+
+
+    
+    
+   
 }

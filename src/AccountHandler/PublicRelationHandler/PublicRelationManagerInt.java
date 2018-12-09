@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UtilityHandler;
+package AccountHandler.PublicRelationHandler;
+
+import java.rmi.Remote;
 
 /**
  *
- * @author glori
+ * @author Cherine Hussein
  */
-public interface UtilitiesAgencyInt {
-    public void addNewUtility(Utility utilityIn);
-    public Utility getUtility();
+public interface PublicRelationManagerInt extends Remote{
     
 }

@@ -51,8 +51,25 @@ public class BusStopPlace implements BusStopPlaceInt {
     @Override
     public String checkBussesSchedule() {
        
-       return "the number of busses in the bus stop is "+allocatedBusses.size()+" ,One will be dispatched according to the following slots, "+ getBussesSchedule().findAvailableSlots();
+       return "the number of busses in the bus stop is "+allocatedBusses.size()+" ,One will be dispatched according to the following slots, "+ getBussesSchedule().toString();
         
+    }
+
+    @Override
+    public String toString() {
+        String result=" ";
+        result+= "The region of this stop is "+region;
+        for (int i = 0; i < allocatedBusses.size(); i++) {
+            result += "\n   Bus No"+i+ allocatedBusses.get(i);
+                    
+        }
+        
+        result += "\n   Bus No"+bussesSchedule.toString();
+                    
+        
+        
+        return result;
+                
     }
 
     @Override

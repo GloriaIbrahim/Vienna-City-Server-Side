@@ -49,7 +49,16 @@ public class ComplaintTable {
             System.out.println("Complaint wasn't found.");
         }
     }
-
+    
+    public void deleteAllComplaintsBySpecificUser(String n) {
+        boolean result = collection.deleteMany(Filters.all("residentName", n)).wasAcknowledged();
+        if (result) {
+            System.out.println("Complaints are Deleted.");
+        } else {
+            System.out.println("Complaints aren't found.");
+        }
+    }
+    
     public Complaint getComplaintByID(int id) {
         Document doc = collection.find(Filters.eq("ID", id)).first();
         Complaint result = gson.fromJson(doc.toJson(), Complaint.class);

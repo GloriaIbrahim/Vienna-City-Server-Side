@@ -42,6 +42,16 @@ public class PublicRelation extends Staff implements PublicRelationInt{
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public void checkIn(Time t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void checkOut(Time t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

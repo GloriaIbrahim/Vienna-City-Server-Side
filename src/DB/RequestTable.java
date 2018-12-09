@@ -20,7 +20,7 @@ import org.bson.Document;
  * @author glori
  */
 public class RequestTable {
-     private MongoClient client;
+    private MongoClient client;
     private MongoDatabase database;
     private MongoCollection<Document> collection;
     private Gson gson = new Gson();
@@ -49,7 +49,15 @@ public class RequestTable {
             System.out.println("Request wasn't found.");
         }
     }
-
+    
+    public void deleteAllRequestsBySpecificUser(String n) {
+        boolean result = collection.deleteMany(Filters.all("residentName", n)).wasAcknowledged();
+        if (result) {
+            System.out.println("Requests are Deleted.");
+        } else {
+            System.out.println("Requests aren't found.");
+        }
+    }
     public Request getRequestByID(int id) {
         Document doc = collection.find(Filters.eq("ID", id)).first();
         Request result = gson.fromJson(doc.toJson(), Request.class);

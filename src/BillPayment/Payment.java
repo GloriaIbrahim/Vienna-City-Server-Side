@@ -5,10 +5,13 @@
  */
 package BillPayment;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author glori
  */
-public interface Payment {
-    public String pay(double b);
+public interface Payment extends Remote{
+    public String pay(double b) throws RemoteException;
 }

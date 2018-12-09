@@ -5,11 +5,14 @@
  */
 package ExternalRelations;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 /**
  *
  * @author glori
  */
-public class Contract implements ContractInt,ContractPublicRelationInt{
+public class Contract extends UnicastRemoteObject implements ContractInt,ContractPublicRelationInt{
     private String type;
     private int ID;
     private String date;
@@ -17,10 +20,10 @@ public class Contract implements ContractInt,ContractPublicRelationInt{
     private String status;
     private String description;
 
-    public Contract() {
+    public Contract()throws RemoteException {
     }
 
-    public Contract(String type, int ID, String date, String dateOfExpiry, String status, String description) {
+    public Contract(String type, int ID, String date, String dateOfExpiry, String status, String description)throws RemoteException {
         this.type = type;
         this.ID = ID;
         this.date = date;
@@ -29,65 +32,66 @@ public class Contract implements ContractInt,ContractPublicRelationInt{
         this.description = description;
     }
 
-    public void createContract(String t,String d,String e,String s,String des){
-        
+    /*public void addContract(ContractInt contractObj,CompanyInt companyObj)throws RemoteException{
+        companyObj.setContract(contractObj);
     }
     
-    public void removeContract(int id){
+    public void removeContract(CompanyInt companyObj)throws RemoteException{
+        companyObj.setContract(null);
         
     }
-    public void approveContract(int id){
-        
+    public void approveContract()throws RemoteException{
+        this.setStatus("Approved");
     }
-    public Contract editContract(int id){
+    public Contract editContract(int id)throws RemoteException{
         return this;
-    }
+    }*/
     
-    public String getType() {
+    public String getType()throws RemoteException {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type)throws RemoteException {
         this.type = type;
     }
 
-    public int getID() {
+    public int getID()throws RemoteException {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(int ID) throws RemoteException{
         this.ID = ID;
     }
 
-    public String getDate() {
+    public String getDate()throws RemoteException {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)throws RemoteException {
         this.date = date;
     }
 
-    public String getDateOfExpiry() {
+    public String getDateOfExpiry()throws RemoteException {
         return dateOfExpiry;
     }
 
-    public void setDateOfExpiry(String dateOfExpiry) {
+    public void setDateOfExpiry(String dateOfExpiry)throws RemoteException {
         this.dateOfExpiry = dateOfExpiry;
     }
 
-    public String getStatus() {
+    public String getStatus()throws RemoteException {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String statust)throws RemoteException {
         this.status = status;
     }
 
-    public String getDescription() {
+    public String getDescription()throws RemoteException {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws RemoteException{
         this.description = description;
     }
 
@@ -95,5 +99,15 @@ public class Contract implements ContractInt,ContractPublicRelationInt{
     public String toString() {
         return "Contract{" + "type=" + type + ", ID=" + ID + ", date=" + date + ", dateOfExpiry=" + dateOfExpiry + ", status=" + status + ", description=" + description + '}';
     }
+
+
+   
+
+
+
+   
+
+
+ 
     
 }

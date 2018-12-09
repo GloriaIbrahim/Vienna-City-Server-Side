@@ -34,11 +34,21 @@ public class ResidentService extends Staff implements ResidentServiceInt,Residen
     }
     @Override
     public void getNewRequestNotification(String m) {
-        System.out.println("NewComplain NOTE :"+m); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("NewRequest NOTE :"+m); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void contactPublicRelation(PublicRelation pr, String m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void checkIn(Time t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void checkOut(Time t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

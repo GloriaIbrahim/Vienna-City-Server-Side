@@ -15,8 +15,8 @@ import java.rmi.RemoteException;
 public interface AdminInt {
     public void monitorAttandance()throws RemoteException;
     //public Admin getAdminInstance();
-    public void login(String u,String p)throws RemoteException;
-    public void logout()throws RemoteException;
-    public void editProfile(AdminInt a)throws RemoteException;
+    //public void login(String u,String p)throws RemoteException;
+    //public void logout()throws RemoteException;
+    //public void editProfile(AdminInt a)throws RemoteException;
     
 }

@@ -13,7 +13,7 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author glori
  */
-public class RequestFacade  extends UnicastRemoteObject implements RequestInt{
+public class RequestFacade  extends UnicastRemoteObject implements RequestFacadeInt{
     private Request request;
 
     public RequestFacade()throws RemoteException  {
@@ -21,19 +21,17 @@ public class RequestFacade  extends UnicastRemoteObject implements RequestInt{
     }
 
     
-    public RequestFacade(Request request) throws RemoteException {
-        this.request = request;
+    public RequestFacade(RequestInt request) throws RemoteException {
+        this.request = (Request) request;
     }
     
-    @Override
-    public void addNewRequest(Request r)throws RemoteException {
-        request.addNewRequest(r);
+    /*public void addNewRequest(RequestInt r)throws RemoteException {
+        request.addNewRequest((Request) r);
     }
     
-    @Override
-    public Request viewRequest()throws RemoteException {
-        return request;
-    }
+    public RequestInt viewRequest()throws RemoteException {
+        return (RequestInt) request;
+    }*/
     
     public void notifyAllResidentServices()throws RemoteException {
         request.notifyAllResidentServices();
@@ -47,11 +45,10 @@ public class RequestFacade  extends UnicastRemoteObject implements RequestInt{
         request.removeResidentService(name);
     }
     
-    @Override
-    public void deleteRequest()throws RemoteException {
+    /*public void deleteRequest()throws RemoteException {
         request.deleteRequest();
     }
-    
+    */
     @Override
     public void setResidentInfo(String name,String phone,String add)throws RemoteException {
         request.setResidentName(name);
@@ -61,6 +58,6 @@ public class RequestFacade  extends UnicastRemoteObject implements RequestInt{
     
     @Override
     public String getResidentInfo()throws RemoteException {
-        return "Resident Name "+request.getResidentName()+"/nResident Phone "+request.getResidentPhone()+"/nResident Address "+request.getResidentAddress();
+        return "Resident Name "+request.getResidentName()+"\nResident Phone "+request.getResidentPhone()+"\nResident Address "+request.getResidentAddress();
     }
 }

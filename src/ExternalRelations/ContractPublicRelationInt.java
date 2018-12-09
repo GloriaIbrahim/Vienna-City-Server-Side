@@ -5,12 +5,21 @@
  */
 package ExternalRelations;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author glori
  */
-public interface ContractPublicRelationInt {
-    public void createContract(String t,String d,String e,String s,String des);
-    public void removeContract(int id);
-    public Contract editContract(int id);
+public interface ContractPublicRelationInt extends Remote {
+    /*public void addContract(ContractInt contractObj,CompanyInt companyObj)throws RemoteException;
+    public void removeContract(CompanyInt company)throws RemoteException;
+    public Contract editContract(int id)throws RemoteException;*/
+    public String getType()throws RemoteException;
+    public int getID()throws RemoteException;
+    public String getDate()throws RemoteException;
+    public String getDateOfExpiry()throws RemoteException;
+    public String getStatus()throws RemoteException;
+    public String getDescription()throws RemoteException;
 }

@@ -5,11 +5,20 @@
  */
 package BillPayment;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 /**
  *
  * @author glori
  */
-public interface BillInt {
-    public String Pay(double a);
-    public Bill viewBill();
+public interface BillInt extends Remote{
+    public String getResidentName() throws RemoteException;
+    public int getID() throws RemoteException;
+    public String getType() throws RemoteException;
+    public String getDescription() throws RemoteException;
+    public double getAmount() throws RemoteException;
+    public BillInt getBillByIndex(int i) throws RemoteException;
+    public Payment selectPaymentMethod(String m) throws RemoteException;
 }

@@ -6,6 +6,7 @@
 package AccountHandler.EmplyeeHandler;
 
 import AccountHandler.Staff;
+import DB.EmployeeGateway;
 import java.rmi.RemoteException;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -14,27 +15,20 @@ import java.util.ArrayList;
  *
  * @author glori
  */
-public class Employee extends Staff implements EmployeeInt{
+public class Employee extends Staff implements EmployeeInt {
+
     private Boolean availability;
-    private ArrayList<String> workingDays;
+    private String[] workingDays;
+    private String jobTitle;
 
-    public Employee()throws RemoteException {
+    public Employee() throws RemoteException {
     }
 
-    public Employee(String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
-        super(name, SSN, dateOfBirth, username, password);
-    }
-
-    public Employee(Boolean availability, ArrayList<String> workingDays, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
+    public Employee(String name, int SSN, String dateOfBirth, String username, String password, Boolean availability, String[] workingDays, String jobTitle) throws RemoteException {
         super(name, SSN, dateOfBirth, username, password);
         this.availability = availability;
         this.workingDays = workingDays;
-    }
-
-    public Employee(Boolean availability, ArrayList<String> workingDays, Time checkInTime, Time checkOutTime, float salary, String name, int SSN, String dateOfBirth, String username, String password) throws RemoteException {
-        super(checkInTime, checkOutTime, salary, name, SSN, dateOfBirth, username, password);
-        this.availability = availability;
-        this.workingDays = workingDays;
+        this.jobTitle = jobTitle;
     }
 
     @Override
@@ -47,17 +41,44 @@ public class Employee extends Staff implements EmployeeInt{
     }
 
     @Override
-    public ArrayList<String> getWorkingDays() {
+    public String[] getWorkingDays() {
         return workingDays;
     }
 
-    public void setWorkingDays(ArrayList<String> workingDays) {
+    public void setWorkingDays(String[] workingDays) {
         this.workingDays = workingDays;
     }
 
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
     @Override
-    public String toString() {
-        return "Employee{" + "availability=" + availability + ", workingDays=" + workingDays + '}';
+    public String getjobTitle() {
+        return jobTitle;
+    }
+
+    public Employee test() {
+        EmployeeGateway employeeGateway = EmployeeGateway.getInstance();
+        Employee tempEmployee = employeeGateway.getEmployeeByID(this.SSN);
+        System.out.println("test done");
+        return tempEmployee;
     }
     
+    public String isWorking(String dayIn)
+    {
+        for (int i = 0; i <= workingDays.length; i++)
+        {
+            if (workingDays[i].equals(dayIn))
+                return dayIn;
+        }   
+        return "not working at that day";
+    }
+
+
+
 }

@@ -5,25 +5,56 @@
  */
 package UtilityHandler;
 
+import AccountHandler.EmplyeeHandler.Employee;
+import AccountHandler.EmplyeeHandler.EmployeeInt;
+import DB.UtilityGateway;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author glori
  */
-public class GardeningUtility implements Utility {
+public class GardeningUtility extends UtilityInt {
 
-    @Override
-    public void reserveUtility(String i, String j, String h, String k, String l) {
-        
-    }
-
-    @Override
-    public void scheduleReservation(String i) {
-        
-    }
-
-    @Override
-    public Utility getReservation() {
-        return null;
+    public GardeningUtility() throws RemoteException {
     }
     
+
+    public GardeningUtility(Integer utilityID, String utilityType, Employee employee, String residentName, String residentPhone, String time, String day) throws RemoteException {
+        super(utilityID, utilityType, employee, residentName, residentPhone, time, day);
+    }
+
+    @Override
+    public String whatAmI() 
+    {
+        System.out.println("I'm a Gardening utility");
+        return "I'm a Gardening utility";
+
+    }
+
+
+    public Employee getAssignedEmployee() {
+        return assignedEmployee;
+    }
+
+    public String getResidentName() {
+        return residentName;
+    }
+
+    public String getResidentAddress() {
+        return residentAddress;
+    }
+
+    public String getResidentPhone() {
+        return residentPhone;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
 }

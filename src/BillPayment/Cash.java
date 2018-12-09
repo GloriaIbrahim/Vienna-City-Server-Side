@@ -5,13 +5,24 @@
  */
 package BillPayment;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author glori
  */
-public class Cash implements Payment{
+public class Cash extends UnicastRemoteObject implements Payment{
+
+    public Cash() throws RemoteException{
+    }
+    
+    
+    
     @Override
-    public String pay(double b){
-        return "";
+    public String pay(double b) throws RemoteException{
+        
+        return "Paid Sucessfully";
     }
 }

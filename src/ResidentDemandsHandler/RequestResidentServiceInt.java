@@ -13,6 +13,4 @@ import java.rmi.RemoteException;
  * @author glori
  */
 public interface RequestResidentServiceInt extends Remote {
-    public void deleteRequest()throws RemoteException ;
-    public Request viewRequest()throws RemoteException ;
 }

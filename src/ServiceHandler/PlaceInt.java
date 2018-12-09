@@ -5,12 +5,20 @@
  */
 package ServiceHandler;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author glori
  */
-public interface PlaceInt {
-    public void bookPlacel(String i);
-    public void approveBooking();
+public interface PlaceInt extends Remote{
+    public void bookPlacel(String i) throws RemoteException;
+    public void approveBooking()throws RemoteException;
+    //////////////////////////////////////////////////////
+    public String getName() throws RemoteException;
+    public String getAddress() throws RemoteException ;
+    public ScheduleInt getPlaceSchedule() throws RemoteException ;
+
     
 }

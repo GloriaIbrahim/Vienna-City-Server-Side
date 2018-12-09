@@ -44,10 +44,10 @@ public class Admin extends Person implements AdminInt{
         return "Admin{" + "adminInstance=" + adminInstance + '}';
     }
 
-    @Override
+    /*@Override
     public void editProfile(AdminInt a) throws RemoteException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
     
     
 }

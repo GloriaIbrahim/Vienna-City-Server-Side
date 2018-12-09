@@ -5,26 +5,27 @@
  */
 package UtilityHandler;
 
+import AccountHandler.EmplyeeHandler.Employee;
+import java.rmi.RemoteException;
+
 /**
  *
  * @author glori
  */
-public class CleaningUtility implements Utility{
+public class CleaningUtility extends UtilityInt {
 
-    @Override
-    public void reserveUtility(String i, String j, String h, String k, String l) {
-
-    }
-
-    @Override
-    public void scheduleReservation(String i) {
-
-    }
-
-    @Override
-    public Utility getReservation() {
-        return null;
-
+    public CleaningUtility() throws RemoteException {
     }
     
+
+    public CleaningUtility(Employee employee, String residentName, String residentPhone, String time, String day) throws RemoteException {
+        super(null, null, employee, residentName, residentPhone, time, day);
+    }
+
+    @Override
+    public String whatAmI() throws RemoteException {
+        System.out.println("I'm a Cleaning utility");
+        return "I'm a Cleaning utility";
+    }
+
 }

@@ -13,9 +13,10 @@ import java.rmi.RemoteException;
  * @author glori
  */
 public interface ComplaintInt extends Remote{
-    public void addNewComplaint(Complaint c)throws RemoteException;
-    public void deleteComplaint()throws RemoteException;
-    public Complaint viewComplaint()throws RemoteException;
-    public void setResidentInfo(String name,String phone,String add)throws RemoteException;
-    public String getResidentInfo()throws RemoteException ;
+    public String getResidentName()throws RemoteException;
+    public void setResidentName(String residentName)throws RemoteException;
+    public String getResidentPhone()throws RemoteException;
+    public void setResidentPhone(String residentPhone)throws RemoteException;
+    public String getResidentAddress()throws RemoteException;
+    public void setResidentAddress(String residentAddress)throws RemoteException;
 }

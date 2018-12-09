@@ -14,9 +14,9 @@ import java.sql.Time;
  * @author glori
  */
 public interface ResidentServiceInt {
-    public void login(String u,String p);
-    public void logout();
-    public void editProfile(Person p);
+    //public void login(String u,String p);
+    //public void logout();
+    //public void editProfile(Person p);
     public void checkIn(Time t);
     public void checkOut(Time t);
     public float checkSalary();

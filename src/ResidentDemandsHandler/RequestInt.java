@@ -13,9 +13,14 @@ import java.rmi.RemoteException;
  * @author glori
  */
 public interface RequestInt extends Remote {
-    public void addNewRequest(Request r)throws RemoteException ;
-    public Request viewRequest()throws RemoteException ;
-    public void deleteRequest()throws RemoteException ;
-    public void setResidentInfo(String name,String phone,String add)throws RemoteException;
-    public String getResidentInfo()throws RemoteException ;
+    public String getResidentName()throws RemoteException;
+    public void setResidentName(String residentName)throws RemoteException;
+    public String getResidentPhone()throws RemoteException;
+    public void setResidentPhone(String residentPhone)throws RemoteException;
+    public String getResidentAddress()throws RemoteException;
+    public void setResidentAddress(String residentAddress)throws RemoteException;
+    public String getServiceType()throws RemoteException;
+    public void setServiceType(String serviceType)throws RemoteException;
+    public String getServiceNeededDate()throws RemoteException;
+    public void setServiceNeededDate(String serviceNeededDate)throws RemoteException;
 }

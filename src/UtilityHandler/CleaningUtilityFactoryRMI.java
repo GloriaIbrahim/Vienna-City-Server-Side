@@ -5,13 +5,12 @@
  */
 package UtilityHandler;
 
+import java.rmi.Remote;
 
 /**
  *
- * @author glori
+ * @author Moataz
  */
-public interface Utility {
-    public void reserveUtility(String i,String j,String h,String k,String l);
-    public void scheduleReservation(String i);
-    public Utility getReservation();
+public interface CleaningUtilityFactoryRMI extends Remote{
+    
 }
