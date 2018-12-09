@@ -21,11 +21,7 @@ public class Complaint extends UnicastRemoteObject implements ComplaintInt, Comp
     private ArrayList<ResidentServiceObserver> residentServices;
 
     public Complaint()throws RemoteException {
-        for(int i=0;i<AccountsManager.getAccountManager().getResidentServices().size();i++)
-        {
-            this.residentServices.add(AccountsManager.getAccountManager().getResidentServices().get(i));
-        }
-        notifyAllResidentServices();
+        //notifyAllResidentServices();
     }
     
     public Complaint(String residentName, String residentPhone, String residentAddress, String complaintAbout, String complaintDescription,int id)throws RemoteException {
@@ -34,12 +30,8 @@ public class Complaint extends UnicastRemoteObject implements ComplaintInt, Comp
         this.residentAddress = residentAddress;
         this.complaintAbout = complaintAbout;
         this.complaintDescription = complaintDescription;
-        for(int i=0;i<AccountsManager.getAccountManager().getResidentServices().size();i++)
-        {
-            this.residentServices.add(AccountsManager.getAccountManager().getResidentServices().get(i));
-        }
         this.ID=id;
-        notifyAllResidentServices();
+        //notifyAllResidentServices();
     }
 
     

@@ -86,7 +86,7 @@ public class ServiceManger extends UnicastRemoteObject implements ServiceManager
       //  this.socialplaces=spt.getAllplace();
        
         SocialPlace holder;
-        holder = (SocialPlace) spt.getplaceByname("x");
+        holder = (SocialPlace) spt.getplaceByname("Nady El Zohour");
         
         
        //  socialplaces.equals(pt.getAllplace());
@@ -102,7 +102,7 @@ public class ServiceManger extends UnicastRemoteObject implements ServiceManager
        
         
         ReligiousPlace holder;
-        holder = (ReligiousPlace) rpt.getplaceByname("rp");
+        holder = (ReligiousPlace) rpt.getplaceByname("Rab3a");
         System.out.println(holder.getName());
         System.out.println("el arraylist hsyalaa el dataaa");
         return holder;
@@ -112,7 +112,7 @@ public class ServiceManger extends UnicastRemoteObject implements ServiceManager
        
         
         CateringPlace holder;
-        holder = (CateringPlace) cpt.getplaceByname("cp");
+        holder = (CateringPlace) cpt.getplaceByname("La Poire");
         System.out.println(holder.getName());
         System.out.println("el arraylist hsyalaa el dataaa");
         return holder;

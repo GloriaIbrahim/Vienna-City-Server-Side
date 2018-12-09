@@ -37,7 +37,10 @@ import DB.BillDB;
 import DB.EmployeeGateway;
 import ExternalRelations.ExternalRelationsManager;
 import ExternalRelations.ExternalRelationsManagerInt;
+import ServiceHandler.PlaceFactory;
+import ServiceHandler.Schedule;
 import ServiceHandler.ServiceManger;
+import ServiceHandler.SocialPlace;
 import UtilityHandler.CleaningUtilityFactory;
 import UtilityHandler.ElectricityUtilityFactory;
 import UtilityHandler.GardeningUtilityFactory;
@@ -110,7 +113,8 @@ public class ViennaCity {
         //System.out.println(accountsManager.residentEditPassword(resident1,resident1.getPassword() , "rosalie25"));
 
         //Complaint c=new Complaint(resident1.getName(),resident1.getPhone(),resident1.getAddress(),"Waste of money","It is a waste for my money to pay your huge bills",1);
-        //residentDemands.addNewComplaint(resident1.getName(),resident1.getPhone(),resident1.getAddress(),"Waste of money","It is a waste for my money to pay your huge bills");
+        residentDemands.addNewComplaint(resident1.getName(),resident1.getPhone(),resident1.getAddress(),"Waste of money","It is a waste for my money to pay your huge bills");
+        residentDemands.addNewRequest(resident1.getName(),resident1.getPhone(),resident1.getAddress(), "Gardening", "20/12/2018");
         //resident1.addComplaint(new Complaint(resident1.getName(),resident1.getPhone(),resident1.getAddress(),"Waste of money","It is a waste for my money to pay your huge bills",1));
         //System.out.println(residentDemands.viewComplaintByID(1));
         //residentDemands.deleteAllComplaintsBySpecificUser("Gloria");
@@ -131,9 +135,9 @@ public class ViennaCity {
         
         BillManager b= BillManager.getInstance();
         
-        b.addBill(1,"mohamed","Electricity","Description",100.0);
-        b.addBill(2,"mohamed","water","Description",50.0);
-        b.addBill(3,"mohamed","gas","Description",25.0);
+        b.addBill(50,"Gloria","Electricity","Description",100.0);
+        b.addBill(51,"Gloria","Water","Description",50.0);
+        b.addBill(52,"Gloria","Gas","Description",25.0);
         
         
         BillInt bi=new Bill(44,"m","e","d",555,new Cash());
@@ -147,15 +151,14 @@ public class ViennaCity {
             System.out.println(bills.get(ii).toString());
         }
         
-        int i=1;
         
-        BillInt electricity=new Bill(bi.getBillByIndex(i).getID(),bi.getBillByIndex(i).getResidentName(),bi.getBillByIndex(i).getType(),bi.getBillByIndex(i).getDescription(),bi.getBillByIndex(i).getAmount(),new Cash());
+        BillInt electricity=new Bill(bi.getBillByIndex(50).getID(),bi.getBillByIndex(50).getResidentName(),bi.getBillByIndex(50).getType(),bi.getBillByIndex(50).getDescription(),bi.getBillByIndex(50).getAmount(),new Cash());
         r.bind("bille",electricity);
         r4.bind("bille",electricity);
-        BillInt water=new Bill(bi.getBillByIndex(i+1).getID(),bi.getBillByIndex(i+1).getResidentName(),bi.getBillByIndex(i+1).getType(),bi.getBillByIndex(i+1).getDescription(),bi.getBillByIndex(i+1).getAmount(),new Cash());
+        BillInt water=new Bill(bi.getBillByIndex(51).getID(),bi.getBillByIndex(51).getResidentName(),bi.getBillByIndex(51).getType(),bi.getBillByIndex(51).getDescription(),bi.getBillByIndex(51).getAmount(),new Cash());
         r.bind("billw",water);
         r4.bind("billw",water);
-        BillInt gas=new Bill(bi.getBillByIndex(i+2).getID(),bi.getBillByIndex(i+2).getResidentName(),bi.getBillByIndex(i+2).getType(),bi.getBillByIndex(i+2).getDescription(),bi.getBillByIndex(i+2).getAmount(),new Cash());
+        BillInt gas=new Bill(bi.getBillByIndex(52).getID(),bi.getBillByIndex(52).getResidentName(),bi.getBillByIndex(52).getType(),bi.getBillByIndex(52).getDescription(),bi.getBillByIndex(52).getAmount(),new Cash());
         r.bind("billg",gas);
         r4.bind("billg",gas);
         r.bind("addbill",b);
@@ -176,7 +179,7 @@ public class ViennaCity {
         r3.bind("ExternalRelations",er);
         r3.bind("PRmanager", PR);
         System.out.println("My external relations server is ready!");
-        
+        er.addNewCompany("KFC", 19019, "Giza", "Food", null, "KFC@info.com");
         
         ///////////////////////////////////////////////
         /////////////////MOSTAFA///////////////////////
@@ -187,7 +190,27 @@ public class ViennaCity {
         
         accountsManager.addNewResidentService(residentService1);
         
-        
+        ArrayList<String> schavailableDays=new ArrayList<>();
+        schavailableDays.add("Sunday");
+        schavailableDays.add("Monday");
+        schavailableDays.add("Wednesday");
+        sm.CreateAplaceFactory("s", "Nady El Zohour","Nasr City", 2,23,schavailableDays);
+        ArrayList<String> schavailableDays1=new ArrayList<>();
+        schavailableDays1.add("Sunday");
+        schavailableDays1.add("Monday");
+        schavailableDays1.add("Tuesday");
+        schavailableDays1.add("Wednesday");
+        schavailableDays1.add("Thursday");
+        schavailableDays1.add("Friday");
+        schavailableDays1.add("Saturday");
+        sm.CreateAplaceFactory("r", "Rab3a","Nasr City", 1,24,schavailableDays1);
+        ArrayList<String> schavailableDays2=new ArrayList<>();
+        schavailableDays2.add("Saturday");
+        schavailableDays2.add("Monday");
+        schavailableDays2.add("Tuesday");
+        schavailableDays2.add("Thursday");
+        schavailableDays2.add("Friday");
+        sm.CreateAplaceFactory("c", "La Poire","Nasr City", 10,24,schavailableDays2);
         r4.bind("Factory", sm);
         r4.bind("accountsManager", accountsManager);
         r.bind("Factory", sm);

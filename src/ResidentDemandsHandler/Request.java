@@ -22,11 +22,7 @@ public class Request extends UnicastRemoteObject implements RequestInt, RequestS
     private int ID;
     
     public Request() throws RemoteException {
-        for(int i=0;i<AccountsManager.getAccountManager().getResidentServices().size();i++)
-        {
-            this.residentServices.add(AccountsManager.getAccountManager().getResidentServices().get(i));
-        }
-        notifyAllResidentServices();
+        //notifyAllResidentServices();
     }
 
     public Request(String residentName, String residentPhone, String residentAddress, String serviceType, String serviceNeededDate,int id) throws RemoteException {
@@ -36,11 +32,7 @@ public class Request extends UnicastRemoteObject implements RequestInt, RequestS
         this.serviceType = serviceType;
         this.serviceNeededDate = serviceNeededDate;
         this.ID=id;
-        for(int i=0;i<AccountsManager.getAccountManager().getResidentServices().size();i++)
-        {
-            this.residentServices.add(AccountsManager.getAccountManager().getResidentServices().get(i));
-        }
-        notifyAllResidentServices();
+        //notifyAllResidentServices();
         
     }
 
