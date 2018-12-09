@@ -17,4 +17,5 @@ public interface AccountsManagerInt extends Remote{
     public ResidentInt residentLogin(String u,String p)throws RemoteException;
     public void residentEditPassword(ResidentInt r,String p,String newP)throws RemoteException;
     public void updateNewBillIsAdded(String n)throws RemoteException;
+    public void residentServiceLogin(String u,String p)throws RemoteException;
 }

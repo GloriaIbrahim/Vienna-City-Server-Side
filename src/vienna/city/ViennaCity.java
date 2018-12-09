@@ -12,6 +12,7 @@ import AccountHandler.PublicRelationHandler.PublicRelation;
 import AccountHandler.PublicRelationHandler.PublicRelationManager;
 import AccountHandler.ResidentHandler.Resident;
 import AccountHandler.ResidentHandler.ResidentInt;
+import AccountHandler.ResidentServiceHandler.ResidentService;
 import ResidentDemandsHandler.Complaint;
 import ResidentDemandsHandler.Request;
 import ResidentDemandsHandler.RequestFacade;
@@ -182,8 +183,13 @@ public class ViennaCity {
         ///////////////////////////////////////////////
         
         ServiceManger sm = ServiceManger.getInstance();
+        ResidentService residentService1=new ResidentService("Mostafa",12345,"1/12/1997","Tazy","tazy112");
+        
+        accountsManager.addNewResidentService(residentService1);
+        
         Registry r4 = LocateRegistry.createRegistry(1104);
         r4.bind("Factory", sm);
+        r4.bind("accountsManager", accountsManager);
         r.bind("Factory", sm);
         System.out.println("The server is ready");
 

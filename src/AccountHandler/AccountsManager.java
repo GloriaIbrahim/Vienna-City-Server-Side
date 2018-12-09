@@ -11,6 +11,7 @@ import AccountHandler.PublicRelationHandler.PublicRelation;
 import AccountHandler.ResidentHandler.Resident;
 import AccountHandler.ResidentHandler.ResidentInt;
 import AccountHandler.ResidentServiceHandler.ResidentService;
+import DB.ResidentServiceTable;
 import DB.ResidentTable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -27,13 +28,14 @@ public class AccountsManager extends UnicastRemoteObject implements AccountsMana
     private ArrayList<Employee> employees;
     private ArrayList<ResidentService> residentServices;
     private ResidentTable residentTable;
-    
+    private ResidentServiceTable residentServiceTable;
     private AccountsManager()throws RemoteException{
         residentTable=new ResidentTable();
+        residentServiceTable=new ResidentServiceTable();
         residents=residentTable.getAllResidents();
         PRs=new ArrayList<>();
         employees=new ArrayList<>();
-        residentServices=new ArrayList<>();
+        residentServices=residentServiceTable.getAllResidentServices();
         
     }
     
@@ -63,7 +65,18 @@ public class AccountsManager extends UnicastRemoteObject implements AccountsMana
         else
             return null;
     }
-    
+    public void addNewResidentService(ResidentService r){
+        this.residentServiceTable.insertResidentService(r);
+    }
+    @Override
+    public void residentServiceLogin(String u,String p)throws RemoteException{
+        
+        ResidentService residentService=residentServiceTable.getResidentServiceByUsername(u);
+        if(residentService.getPassword().equals(p))
+        
+            System.out.println("Logged in");
+         
+    }
     @Override
     public void updateNewBillIsAdded(String n)throws RemoteException
     {
